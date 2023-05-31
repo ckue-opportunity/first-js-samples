@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script> -->
+    
+    <script src="js/my-first-form-validation.js"></script>
+</head>
+<body> 
+    <h1 id="app">Bitte beantworte die folgenden Fragen!</h1>
+
+    <div class="alert alert-success" role="alert">
+            
+        <form onsubmit="return validateAnswers();">
+            <p>Geht es dir heute gut?</p>
+            <input type="radio" id="ja" name="radio-mood" value="ja">
+            <label for="ja">Ja</label><br>
+            <input type="radio" id="nein" name="radio-mood" value="nein">
+            <label for="nein">Nein</label><br><br>
+
+            <p>Welche Farben hat die Schweizer Fahne?</p>
+            <input type="checkbox" id="color1" name="color-red" value="rot">
+            <label for="color1">Rot</label><br>
+            <input type="checkbox" id="color2" name="color-yellow" value="gelb">
+            <label for="color2">Gelb</label><br>
+            <input type="checkbox" id="color3" name="color-blue" value="blau">
+            <label for="color3">Blau</label><br>
+            <input type="checkbox" id="color4" name="color-white" value="weiss">
+            <label for="color4">Weiss</label><br><br>
+
+            <input type="submit" value="Prüfen und abschicken">
+        </form>
+
+        <p id="message-1"></p>
+        <p id="message-2"></p>
+        <p id="message-3"></p>
+    </div>
+
+</body>
+</html>
