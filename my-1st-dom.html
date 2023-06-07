@@ -28,7 +28,7 @@
     <h1 id="app">Hello DOM-lers!</h1>
 
     <div class="alert alert-success" role="alert">
-            <script>
+        <script>
             /* 
                 a) Vorbereitung: Lege zwei Buttons jeweils mit Identifikator (id) 
                 und Beschriftung an.
@@ -43,11 +43,11 @@
         <button type="button" 
                 class="btn btn-primary"
                 id="defaultButton"
-                onclick="logButtonIdentification(this);">Default</button>
+                onclick="logButtonIdentification(this);">Default !!!</button>
         <button type="button" 
                 class="btn btn-success"
                 id="successButton"
-                onclick="logButtonIdentification(this);">Success</button>
+                onclick="logButtonIdentification(this);">Success ???</button>
     </div>
 
     <div class="alert alert-success" role="alert">
@@ -58,86 +58,28 @@
                 wenn vorher "JA" sichtbar war - und umgekehrt (toggle). 
             */
             function toggleYesNo(element) {
-                if (element.innerText === "NEIN") {
-                    element.innerText = "JA";
-                }
-                else { // innerText ist "JA"
+                if (element.innerText == "JA") { // (element.innerText === "NEIN") 
                     element.innerText = "NEIN";
                 }
+                else { // aktuell ist element.innerText == "NEIN"
+                    element.innerText = "JA";  
+                }
+
+                /* Kurzschreibweise: Wenn ein if-Block nur genau ein Ausdruck (expression) 
+                   enthält, dann kann man bei if else ... die geschweiften Klammern weglassen.
+
+                   if (element.innerText == "JA") element.innerText = "NEIN";
+                   else element.innerText = "JA";
+                */
+
+                // Zusatzaufgabe "JA" -> "NEIN" -> "Weiss nicht ..." -> "JA" etc.
             }
         </script>
-
+    
         <button type="button" 
                 class="btn btn-primary"
                 onclick="toggleYesNo(this);">JA</button>
     </div>
 
-    <div class="alert alert-success" role="alert">
-        <script>
-            /* 
-                c) Vorbereitung: Lege einen eingefärbten Kreis (CSS Circle) und den Button
-                "Löschen" daneben an.
-                Aufgabe: Auf Mausklick lösche den Kreis. 
-            */
-            function deleteCircle(id) {
-                document.getElementById(id).remove();
-            }
-        </script>
-
-        <div id="circle"></div>
-
-        <button type="button" 
-                class="btn btn-primary"
-                onclick="deleteCircle('circle');">Löschen</button>
-    </div>
-
-    <div class="alert alert-success" role="alert">
-        <script>
-            /* 
-                d) Vorbereitung: Lege einen Paragraphen mit 
-                "<p><span>Anzahl Clicks:</span> <span>0</span></p>" 
-                und daneben einen Button mit "increment" beschriftet an.
-                Aufgabe: Auf Mausklick erhöhe die Zahl jeweils mit 1.
-            */
-            function increment(id) {
-                let element = document.getElementById(id);
-                
-                // Konvertiere den innerText (String) in einen Integer mit parseInt().
-                let count = parseInt(element.innerText);
-
-                element.innerText = count + 1;
-            }
-
-            function increment1(id) {
-                document.getElementById(id).innerText++;
-
-                /*
-                    let x = 5;
-                    x++; // x === 6
-
-                    let y = ++x; // y === ?; x === ?
-                    let z = x++; // z === ?; x === ?
-                */
-            }
-        </script>
-
-<div class="alert alert-success" role="alert">
-    <script>
-        /* 
-            e) Vorbereitung: Lege ein blaues <div> an (120px, 160px). 
-            Aufgabe: Wechsle die Farbe des <div> sobald der Mauszeiger darüber fährt
-            und wechsle zurück, sobald der Mauszeiger das <div> wieder verlässt. 
-        */
-
-        function changeColor(element, colorName) {
-            element.style.backgroundColor = colorName;
-        }
-    </script>
-
-    <div id="hotspot"
-         onmouseover="changeColor(this, 'pink');"
-         onmouseout="changeColor(this, 'blue');"></div>
-    </div>
-</div>
 </body>
 </html>
