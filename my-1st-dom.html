@@ -55,24 +55,36 @@
             /* 
                 b) Vorbereitung: Lege einen "JA" Button an.
                 Aufgabe: Auf Mausklick wechsle die Beschriftung des Buttons auf "NEIN",
-                wenn vorher "JA" sichtbar war - und umgekehrt (toggle). 
+                wenn vorher "JA" sichtbar war - und umgekehrt (toggle).
+                
+                b1) Zusatzaufgabe: Erweitere so, dass der Button folgende Zustände annimmt:
+                    "JA" -> "NEIN" -> "Weiss nicht ..." -> "JA" etc. 
             */
             function toggleYesNo(element) {
                 if (element.innerText == "JA") { // (element.innerText === "NEIN") 
                     element.innerText = "NEIN";
                 }
-                else { // aktuell ist element.innerText == "NEIN"
-                    element.innerText = "JA";  
+                else if (element.innerText == "NEIN") {
+                    element.innerText = "Weiss nicht...";
+                }
+                else {
+                    element.innerText = "JA";
                 }
 
-                /* Kurzschreibweise: Wenn ein if-Block nur genau ein Ausdruck (expression) 
+                /* 
+                   if (element.innerText == "JA") { 
+                      element.innerText = "NEIN";
+                   }
+                   else {
+                      element.innerText = "JA";
+                   }
+                
+                   Kurzschreibweise: Wenn ein if-Block nur genau ein Ausdruck (expression) 
                    enthält, dann kann man bei if else ... die geschweiften Klammern weglassen.
 
                    if (element.innerText == "JA") element.innerText = "NEIN";
                    else element.innerText = "JA";
                 */
-
-                // Zusatzaufgabe "JA" -> "NEIN" -> "Weiss nicht ..." -> "JA" etc.
             }
         </script>
     

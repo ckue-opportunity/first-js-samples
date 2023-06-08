@@ -43,6 +43,18 @@ function logWeatherData() {
     console.log(weatherData[propertyName]);
 }
 
+/**
+ * Log list of users, as predefined in an Array of
+ * person Objects.
+ * 
+ * Required is basic JavaScript, plus
+ * minimal, formal knowledge of Array, Object, 
+ * Function, For-Loop, document.write() 
+ * 
+ * This example is for teaching purposes and holds
+ * a group of partial tasks a) to g), that shoud be 
+ * developped with the trainees step-by-step.
+ */
 function logUsers() {
     const users = [
         {
