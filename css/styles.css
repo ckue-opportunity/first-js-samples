@@ -1,3 +1,14 @@
+@font-face{
+    font-family: Technology; 
+    src: url('/fonts/Technology.ttf');
+}
+
 body {
+
+}
+
+#display {
     color: rgb(255, 8, 0);
+    font-family: Technology; 
+    font-size: 40px;
 }
