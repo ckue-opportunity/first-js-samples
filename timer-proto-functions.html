@@ -11,48 +11,69 @@
 </head>
 <body> 
     <h1 id="app">Count Down from 10</h1>
-
     <div class="alert alert-success" role="alert">
         <script>
-            var count;            // Die Variable count ist deklariert. Ihr Wert ist noch undefined.
-            var maxCount = 10;    // Später konfigurierbar
-            var intervalId;       // Wird zum Stoppen von setInterval() verwendet.
+            var count; // Variable count, ihr Wert ist noch undefined.
+            var maxCount; // max count; ganze Zahl (integer); in Sekunden
+            var timerId; // Wird zum Stoppen von setInterval() verwendet.
 
             function startCountdown() {
-                stopCountdown(); // Falls es schon einen Timer gibt: zerst stoppt.
-                setDisplay(maxCount);
-                count = maxCount; // Counter in Anfangszustand setzen.
+                stopCountdown(); // Falls es schon einen Timer gibt: zuerst stoppen
+
+                // maxCount und count in Anfangszustand setzen und Zeit anzeigen
+                maxCount = getSecondsInput();
+                count = maxCount;
+                setTimeDisplay();
 
                 // Verwende die Referenz 'updateCounter', um die Funktion für später zu registrieren.
-                intervalId = setInterval(updateCounter, 1000); // Jede Sekunde: aktualisiere den Zähler und die Anzeige.
+                timerId = setInterval(updateCounter, 1000); // Jede Sekunde: aktualisiere den Zähler und die Anzeige.
             } 
             
             function stopCountdown() {
                 // JavaScript Funktion clearInterval() aufrufen.
-                clearInterval(intervalId);
+                clearInterval(timerId);
             }
 
             function updateCounter() {
-                count = count - 1; // Kurzform: count--;
-                
-                // If done then stop updating.
-                if (count === 0) {
-                    // Count down ist fertig.
-                    setDisplay('GO!');
+                count = count - 1; // Kurzschreibweise: count--;
+                setTimeDisplay();
+
+                if (count === 0) { // count is the same type as 0 AND count equals 0
                     stopCountdown();
+                    setDisplay("Fertig!");
+                    // Audio abspielen
+                    // Ausruf, Hinweis anzeigen
                 }
-                else {
-                    // Zeige aktuellen 'count' an.
-                    setDisplay(count);
-                }
+            }
+
+            function setTimeDisplay() {
+                setDisplay(secondsToTimeString(count));
             }
 
             function setDisplay(info) { // 'info' kann z. Bsp. ein String oder eine Zahl sein.
-                document.getElementById("display").innerText = info;
+                document.getElementById("display").innerHTML = info;
+            }
+
+            function getSecondsInput() {
+                let value = document.getElementById("seconds").value; // 'value' ist ein String.
+                return parseInt(value); // Mit parseInt() den String in eine ganze Zahl umwandeln.
+            }
+
+            function secondsToTimeString(seconds) {
+                let minutes = Math.floor(seconds / 60);
+                let hours = Math.floor(minutes / 60);
+
+                return timeToString(hours, minutes, seconds % 60);
+            }
+
+            function timeToString(hours, minutes, seconds) {
+                return hours.toString().padStart(2, "0") + ":" + 
+                       minutes.toString().padStart(2, "0") + ":" + 
+                       seconds.toString().padStart(2, "0");
             }
         </script>
 
-        <p id="display">&nbsp;</p>
+        <p id="display" style="font-size: xx-large;">&nbsp;</p>
 
         <button type="button" 
                 class="btn btn-primary"
@@ -63,6 +84,11 @@
                 class="btn btn-success"
                 id="stopButton"
                 onclick="stopCountdown();">STOP</button>
+
+        <form>
+            <input type="number" id="seconds" value="20" style="width:50px; margin-top:20px;">
+            <label>sec</label>
+        </form>
     </div>
 
 </body>
